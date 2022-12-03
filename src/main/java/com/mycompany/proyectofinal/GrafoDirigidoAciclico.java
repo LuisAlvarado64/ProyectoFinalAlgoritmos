@@ -7,11 +7,14 @@ package com.mycompany.proyectofinal;
 public class GrafoDirigidoAciclico{
     int vertices;
     Vertice [] todosVertices;
+    int aristas=0;
+    Arista aristasTodas [];
     int vActual=0;
     public GrafoDirigidoAciclico(int n)  
     {
         this.vertices = n;
         todosVertices = new Vertice[n];
+        aristasTodas = new Arista[n*n];
     }
     
     public int gradoDeEntrada(int i){
@@ -73,6 +76,20 @@ public class GrafoDirigidoAciclico{
         if((i>vertices-1||i<0)||(j>vertices-1||j<0)){
             throw new IllegalArgumentException("i o j están fuera de rango");
         }
+        else
+        {
+            int posicionI = encontrarVertice(Integer.toString(i));
+            int posicionJ = encontrarVertice(Integer.toString(j));
+            if( posicionI != 1 && posicionJ !=-1)
+            {
+                aristasTodas[aristas]= new Arista(Integer.toString(i),Integer.toString(j));
+                aristas++;
+            }
+            else
+            {
+                System.out.println("Vertice inexistente.");
+            }
+        }
         return sePudo;
     }
     
@@ -106,5 +123,19 @@ public class GrafoDirigidoAciclico{
         {
             System.out.println("Ya se ingresaron el máximo de vertices");
         }
+    }
+    public int encontrarVertice(String nombre)
+    {
+        Vertice buscando=new Vertice(nombre);
+        int pos=-1;
+        for(int k=0;k<vActual;k++)
+        {
+            boolean esta = buscando.getNombre().equals(todosVertices[k].getNombre());
+            if(esta==true)
+            {
+                pos=k;
+            }
+        }
+        return pos;
     }
 }
