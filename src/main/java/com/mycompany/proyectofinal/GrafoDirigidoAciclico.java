@@ -85,19 +85,26 @@ public class GrafoDirigidoAciclico{
     {
         Vertice nuevoV = new Vertice(nombre);
         boolean repetido=false;
-        for(int i=0; i<vActual;i++)
+        if(vActual<vertices)
         {
-            repetido = todosVertices[i].getNombre().equals(nombre);
-        }
-        if(repetido==true)
-        {
-            System.out.println("Ya existe tal vertice.");
+            for(int i=0; i<vActual;i++)
+            {
+                repetido = todosVertices[i].getNombre().equals(nombre);
+            }
+            if(repetido==true)
+            {
+                System.out.println("Ya existe tal vertice.");
+            }
+            else
+            {
+                nuevoV.darPosicion(vActual);
+                todosVertices[vActual] = nuevoV;
+                vActual++;
+            }
         }
         else
         {
-            nuevoV.darPosicion(vActual);
-            todosVertices[vActual] = nuevoV;
-            vActual++;
+            System.out.println("Ya se ingresaron el máximo de vertices");
         }
     }
 }
