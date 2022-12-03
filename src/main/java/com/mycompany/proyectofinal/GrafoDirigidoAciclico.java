@@ -7,6 +7,7 @@ package com.mycompany.proyectofinal;
 public class GrafoDirigidoAciclico{
     int vertices;
     Vertice [] todosVertices;
+    int vActual=0;
     public GrafoDirigidoAciclico(int n)  
     {
         this.vertices = n;
@@ -82,6 +83,21 @@ public class GrafoDirigidoAciclico{
     
     public void insertarVertice(String nombre)
     {
-        
+        Vertice nuevoV = new Vertice(nombre);
+        boolean repetido=false;
+        for(int i=0; i<vActual;i++)
+        {
+            repetido = todosVertices[i].getNombre().equals(nombre);
+        }
+        if(repetido==true)
+        {
+            System.out.println("Ya existe tal vertice.");
+        }
+        else
+        {
+            nuevoV.darPosicion(vActual);
+            todosVertices[vActual] = nuevoV;
+            vActual++;
+        }
     }
 }
