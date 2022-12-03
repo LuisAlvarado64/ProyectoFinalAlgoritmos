@@ -29,13 +29,6 @@ public class Arista
     
     public boolean hayCiclo()
     {
-        if(destino.equals(origen))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return destino.equals(origen);
     }
 }
