@@ -6,4 +6,8 @@ package com.mycompany.proyectofinal;
  */
 public class A {
 //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    
+    public void holis(){
+        System.out.println("que loco esto");
+    }
 }
