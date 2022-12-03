@@ -6,9 +6,11 @@ package com.mycompany.proyectofinal;
  */
 public class GrafoDirigidoAciclico{
     int vertices;
-
-    public GrafoDirigidoAciclico(int n)  {
+    Vertice [] todosVertices;
+    public GrafoDirigidoAciclico(int n)  
+    {
         this.vertices = n;
+        todosVertices = new Vertice[n];
     }
     
     public int gradoDeEntrada(int i){
@@ -76,5 +78,10 @@ public class GrafoDirigidoAciclico{
     public void elimiarAristas(){
     
     
+    }
+    
+    public void insertarVertice(String nombre)
+    {
+        
     }
 }
