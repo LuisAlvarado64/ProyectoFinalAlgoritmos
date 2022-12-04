@@ -27,7 +27,7 @@ public class GrafoDirigidoAciclico{
             for (Arista aristasToda : aristasTodas) {
                 if (aristasToda!=null && aristasToda.destino.compareTo(""+i) == 0) { //compara el vertice con los detinos de todas las aristas para saber si tiene grados de entrada
                     gradoEntrada++;
-                    System.out.println("entra");
+                    
                 }
             }
         }
@@ -35,10 +35,17 @@ public class GrafoDirigidoAciclico{
         return gradoEntrada;
     }
     
+    //TERMINADO ANDREA
     public int gradoDeSalida(int i){
-        int gradoSalida = 1;
+        int gradoSalida = 0;
         if(i>vertices-1||i<0){
             throw new IllegalArgumentException("i está fuera de rango");
+        } else{
+            for (Arista aristasToda : aristasTodas) {
+                if(aristasToda!=null && aristasToda.origen.compareTo(""+i)==0){//compara el vertice con los origenes de todas las aristas para saber si tiene grados de salida
+                    gradoSalida++;
+                }
+            }
         }
         return gradoSalida;
     }

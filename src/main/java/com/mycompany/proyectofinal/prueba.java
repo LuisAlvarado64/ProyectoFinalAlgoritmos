@@ -30,6 +30,11 @@ public class prueba {
         System.out.println("Grado de entrada de vertice 2:"+ grafo.gradoDeEntrada(2));
         System.out.println("Grado de entrada de vertice 3:"+ grafo.gradoDeEntrada(3));
         
+        System.out.println("Grado de salida de vertice 0:"+ grafo.gradoDeSalida(0));
+        System.out.println("Grado de salida de vertice 1:"+ grafo.gradoDeSalida(1));
+        System.out.println("Grado de salida de vertice 2:"+ grafo.gradoDeSalida(2));
+        System.out.println("Grado de salida de vertice 3:"+ grafo.gradoDeSalida(3));
+        
     }
     
 }
