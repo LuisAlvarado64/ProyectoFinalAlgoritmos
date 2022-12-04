@@ -50,6 +50,7 @@ public class GrafoDirigidoAciclico{
         return gradoSalida;
     }
     
+    //TERMINADO ANDREA
     public int cuantasAristasHay(){
         int nAristas = 0;
         for (Arista aristasToda : aristasTodas) {
@@ -60,10 +61,17 @@ public class GrafoDirigidoAciclico{
         return nAristas;
     }
     
+    //TERMINADO ANDREA
     public boolean adyacente(int i, int j){
-        boolean si = true;
+        boolean si = false;
         if((i>vertices-1||i<0)||(j>vertices-1||j<0)){
             throw new IllegalArgumentException("i o j están fuera de rango");
+        } else{
+            for (Arista aristasToda : aristasTodas) {
+                if(aristasToda!=null && aristasToda.origen.compareTo(""+i)==0 && aristasToda.destino.compareTo(""+j)==0 ){
+                    si = true;
+                }
+            }
         }
         return si;
     }
@@ -80,7 +88,14 @@ public class GrafoDirigidoAciclico{
     
     public String topologicalSort(){
         String orden = "1-2-3-4-5";
-        return orden;
+        String topological="";
+        
+        for (int i = 0; i < todosVertices.length; i++) {
+            
+        }
+        
+        
+                return orden;
     }
     
     public boolean tieneCiclos(){
