@@ -4,6 +4,8 @@
  */
 package com.mycompany.proyectofinal;
 
+import java.util.LinkedList;
+
 /**
  * ✓
  * @author magui
@@ -11,15 +13,18 @@ package com.mycompany.proyectofinal;
 public class Vertice {
     String nombre;
     int posicion;
+    //LinkedList<Object> listaAd;
 
     public Vertice(String nombre) {
         this.nombre = nombre;
         posicion=-1;
+       // listaAd = new LinkedList();
     }
     public Vertice(String nom, int pos) 
     {
         this.nombre = nom;
         this.posicion = pos;
+      //  listaAd = new LinkedList();
     }
     public void darPosicion(int pos)
     {
@@ -33,6 +38,17 @@ public class Vertice {
     {
         return posicion;
     }
+
+    @Override
+    public String toString() {
+        return "Vértice: " + nombre + "," + "Posición: " + posicion;
+    }
+
+//    public LinkedList<Object> getListaAd() {
+//        return listaAd;
+//    }
+//    
+   
     
     
     
