@@ -7,7 +7,7 @@ package com.mycompany.proyectofinal;
 import java.util.LinkedList;
 
 /**
- *
+ * ✓
  * @author magui
  */
 public class Vertice {

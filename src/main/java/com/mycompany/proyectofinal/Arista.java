@@ -5,7 +5,7 @@
 package com.mycompany.proyectofinal;
 
 /**
- *
+ * ✓
  * @author magui
  */
 public class Arista 
@@ -26,7 +26,7 @@ public class Arista
     public String getDestino() {
         return destino;
     }
-    
+//  Regresa si la arista es un ciclo o no  ✓
     public boolean hayCiclo()
     {
         return destino.equals(origen);

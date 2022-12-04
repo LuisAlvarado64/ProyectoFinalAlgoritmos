@@ -109,6 +109,7 @@ public class GrafoDirigidoAciclico{
         return matriz;
     }
     
+    //Agregar una arista ✓
     public boolean insertarArista(int i, int j){
         boolean sePudo = true;
         if((i>vertices-1||i<0)||(j>vertices-1||j<0)){
@@ -137,7 +138,7 @@ public class GrafoDirigidoAciclico{
     
     
     }
-    
+    //Agregar vertice ✓
     public void insertarVertice(String nombre)
     {
         Vertice nuevoV = new Vertice(nombre);
@@ -164,6 +165,7 @@ public class GrafoDirigidoAciclico{
             System.out.println("Ya se ingresaron el máximo de vertices");
         }
     }
+    //Buscar y regresar posicion del vertice deseado o si no existe un -1 ✓
     public int encontrarVertice(String nombre)
     {
         Vertice buscando=new Vertice(nombre);
