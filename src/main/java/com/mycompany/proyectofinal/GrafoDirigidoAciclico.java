@@ -17,10 +17,19 @@ public class GrafoDirigidoAciclico{
         aristasTodas = new Arista[n*n];
     }
     
+    
+    //TERMINADO ANDREA
     public int gradoDeEntrada(int i){
-        int gradoEntrada = 1;
+        int gradoEntrada = 0;
         if(i>vertices-1||i<0){
             throw new IllegalArgumentException("i está fuera de rango");
+        }else{
+            for (Arista aristasToda : aristasTodas) {
+                if (aristasToda!=null && aristasToda.destino.compareTo(""+i) == 0) { //compara el vertice con los detinos de todas las aristas para saber si tiene grados de entrada
+                    gradoEntrada++;
+                    System.out.println("entra");
+                }
+            }
         }
         
         return gradoEntrada;
@@ -35,7 +44,12 @@ public class GrafoDirigidoAciclico{
     }
     
     public int cuantasAristasHay(){
-        int nAristas = 1;
+        int nAristas = 0;
+        for (Arista aristasToda : aristasTodas) {
+            if(aristasToda!=null){
+                nAristas++;
+            }
+        }
         return nAristas;
     }
     
@@ -82,13 +96,11 @@ public class GrafoDirigidoAciclico{
         {
             int posicionI = encontrarVertice(Integer.toString(i));
             int posicionJ = encontrarVertice(Integer.toString(j));
-            if( posicionI != 1 && posicionJ !=-1)
+            if( posicionI != -1 && posicionJ !=-1)
             {
                 aristasTodas[aristas]= new Arista(Integer.toString(i),Integer.toString(j));
                 aristas++;
-               //extra andrea prueba con lista adyacente (clase)
-               Arista ij = new Arista(Integer.toString(i),Integer.toString(j));
-               todosVertices[posicionI].listaAd.addFirst(ij);
+               
                 
             }
             else
