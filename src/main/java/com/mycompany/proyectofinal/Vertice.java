@@ -5,7 +5,7 @@
 package com.mycompany.proyectofinal;
 
 /**
- *
+ * ✓
  * @author magui
  */
 public class Vertice {
