@@ -51,6 +51,8 @@ public class GrafoDirigidoAciclico{
         boolean conect = true;
         if((j>vertices-1||j<0)){
             throw new IllegalArgumentException("j están fuera de rango");
+        } else{
+           
         }
         return conect;
     }
@@ -84,6 +86,10 @@ public class GrafoDirigidoAciclico{
             {
                 aristasTodas[aristas]= new Arista(Integer.toString(i),Integer.toString(j));
                 aristas++;
+               //extra andrea prueba con lista adyacente (clase)
+               Arista ij = new Arista(Integer.toString(i),Integer.toString(j));
+               todosVertices[posicionI].listaAd.addFirst(ij);
+                
             }
             else
             {
@@ -138,4 +144,13 @@ public class GrafoDirigidoAciclico{
         }
         return pos;
     }
+    
+//     public String mostrarListaAdyacente(String nombre){
+//         Vertice v=new Vertice(nombre);
+//        String lista = "";
+//        for (int i = 0; i < v.listaAd.size(); i++) {
+//            lista += v.listaAd.get(i).toString();
+//        }
+//        return lista;
+//    }
 }

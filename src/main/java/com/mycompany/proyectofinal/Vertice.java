@@ -43,6 +43,12 @@ public class Vertice {
     public String toString() {
         return "Vértice: " + nombre + "," + "Posición: " + posicion;
     }
+
+    public LinkedList<Object> getListaAd() {
+        return listaAd;
+    }
+    
+   
     
     
     
