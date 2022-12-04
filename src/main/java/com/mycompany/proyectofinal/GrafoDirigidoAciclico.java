@@ -53,10 +53,14 @@ public class GrafoDirigidoAciclico {
     //TERMINADO ANDREA
     public int cuantasAristasHay() {
         int nAristas = 0;
+        if(aristasTodas==null){
+            nAristas=0;
+        }else{
         for (Arista aristasToda : aristasTodas) {
             if (aristasToda != null) {
                 nAristas++;
             }
+        }
         }
         return nAristas;
     }
@@ -110,20 +114,23 @@ public class GrafoDirigidoAciclico {
         
         for (int i = 0; i < todosVertices.length; i++) { 
             estructura += todosVertices[i].nombre+ "->";
+            if(aristasTodas!=null){
             for (Arista aristasToda : aristasTodas) {
                 if (aristasToda!=null && aristasToda.origen.compareTo(todosVertices[i].nombre) == 0) { //tiene aristas
                     estructura += " - " + aristasToda.destino;
                 }
 
             }
+            }
             estructura+= "\n";
         }
         return estructura;
     }
 
-    //Agregar una arista ✓
+    //Agregar una arista ✓ MAGUI
     public boolean insertarArista(int i, int j) {
         boolean sePudo = true;
+        
         if ((i > vertices - 1 || i < 0) || (j > vertices - 1 || j < 0)) {
             throw new IllegalArgumentException("i o j están fuera de rango");
         } else {
@@ -140,11 +147,13 @@ public class GrafoDirigidoAciclico {
         return sePudo;
     }
 
+    //TERMINADO ANDREA
     public void eliminarAristas() {
-
+        aristasTodas=null;
+        aristasTodas= new Arista[todosVertices.length*todosVertices.length];
     }
 
-    //Agregar vertice ✓
+    //Agregar vertice ✓ MAGUI
     public void insertarVertice(String nombre) {
         Vertice nuevoV = new Vertice(nombre);
         boolean repetido = false;
@@ -164,7 +173,7 @@ public class GrafoDirigidoAciclico {
         }
     }
 
-    //Buscar y regresar posicion del vertice deseado o si no existe un -1 ✓
+    //Buscar y regresar posicion del vertice deseado o si no existe un -1 ✓ MAGUI
     public int encontrarVertice(String nombre) {
         Vertice buscando = new Vertice(nombre);
         int pos = -1;
@@ -177,12 +186,4 @@ public class GrafoDirigidoAciclico {
         return pos;
     }
 
-//     public String mostrarListaAdyacente(String nombre){
-//         Vertice v=new Vertice(nombre);
-//        String lista = "";
-//        for (int i = 0; i < v.listaAd.size(); i++) {
-//            lista += v.listaAd.get(i).toString();
-//        }
-//        return lista;
-//    }
 }
