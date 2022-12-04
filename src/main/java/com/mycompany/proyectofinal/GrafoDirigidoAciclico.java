@@ -94,10 +94,7 @@ public class GrafoDirigidoAciclico {
         String orden = "1-2-3-4-5";
         String topological = "";
 
-        for (int i = 0; i < todosVertices.length; i++) {
-
-        }
-
+      
         return orden;
     }
 
