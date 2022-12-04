@@ -93,7 +93,7 @@ public class GrafoDirigidoAciclico{
         return sePudo;
     }
     
-    public void elimiarAristas(){
+    public void eliminarAristas(){
     
     
     }
