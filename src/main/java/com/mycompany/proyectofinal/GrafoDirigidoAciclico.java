@@ -88,7 +88,7 @@ public class GrafoDirigidoAciclico {
         }
         return si;
     }
-    //MAGUI 
+    //TERMINADO MAGUI 
     public boolean conectados(int i, int j) {
         boolean conect = false;
         if ((j > vertices - 1 || j < 0)) {
@@ -158,8 +158,13 @@ public class GrafoDirigidoAciclico {
     }
 
     public boolean tieneCiclos() {
-        boolean tiene = true;
-
+        boolean tiene = false;
+        for(int m=0;m<aristas;m++)
+        {
+            Arista aux = aristasTodas[m];
+            tiene = aux.hayCiclo();
+            m=aristas;
+        }
         return tiene;
 
     }
