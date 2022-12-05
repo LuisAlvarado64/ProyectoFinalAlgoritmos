@@ -157,7 +157,7 @@ public class GrafoDirigidoAciclico {
 //        pila.push(j + 1);
 //    }
 
-    public void topo2(){
+    public void topologicalSort(){
         int[] gradosEntrada = new int[todosVertices.length];
         int gradoMayor=0;
         for (int i = 0; i < todosVertices.length; i++) {

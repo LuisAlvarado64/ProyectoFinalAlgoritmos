@@ -37,7 +37,7 @@ public class prueba {
         System.out.println("Estructura\n"+grafo.mostrarEstructura());
         
         
-        grafo.topo2();
+        grafo.topologicalSort();
 //        grafo.eliminarAristasDeXVertice2("1");
 //       // grafo.eliminarAristasDeXVertice2(3);
 //        System.out.println("Total de aristas: " + grafo.cuantasAristasHay());
