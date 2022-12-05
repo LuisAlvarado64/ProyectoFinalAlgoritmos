@@ -37,9 +37,24 @@ public class Arista {
     public String getDestino() {
         return destino;
     }
+
+    public void setOrigen(String origen) {
+        this.origen = origen;
+    }
+
+    public void setDestino(String destino) {
+        this.destino = destino;
+    }
+    
+    
 //  Regresa si la arista es un ciclo o no  ✓
 
     public boolean hayCiclo() {
         return destino.equals(origen);
+    }
+    
+    public void eliminarArista(){
+        origen = null;
+        destino = null;
     }
 }

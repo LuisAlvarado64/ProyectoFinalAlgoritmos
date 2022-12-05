@@ -47,11 +47,13 @@ public class Vertice {
         this.aristasSalida += aristasSalida;
     }
 
+//    public void setAristasEntrada(int aristasEntrada) { //coloca las aristas de entrada
+//        this.aristasEntrada += aristasEntrada;
+//    }
+    
     public void setAristasEntrada(int aristasEntrada) { //coloca las aristas de entrada
-        this.aristasEntrada += aristasEntrada;
+        this.aristasEntrada = aristasEntrada;
     }
-    
-    
     
     @Override
     public String toString() {

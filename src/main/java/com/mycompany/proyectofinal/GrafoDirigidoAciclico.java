@@ -27,13 +27,14 @@ public class GrafoDirigidoAciclico {
     }
 
     //TERMINADO ANDREA
-    public int gradoDeEntrada(int indiceVertice) {
+    public int gradoDeEntrada(String nombreVertice) {
         int gradoEntrada = 0;
-        if (indiceVertice > cantidadVertices - 1 || indiceVertice < 0) {
+        int v1= encontrarVertice(nombreVertice);
+        if (v1 > cantidadVertices - 1 || v1 < 0) {
             throw new IllegalArgumentException("i está fuera de rango");
         } else {
             for (Arista aristasToda : aristasTodas) {
-                if (aristasToda != null && aristasToda.destino.compareTo("" + indiceVertice) == 0) { //compara el vertice con los destinos de todas las aristas para saber si tiene grados de entrada
+                if (aristasToda != null && aristasToda.destino.compareTo("" + nombreVertice) == 0) { //compara el vertice con los destinos de todas las aristas para saber si tiene grados de entrada
                     gradoEntrada++;
 
                 }
@@ -66,8 +67,11 @@ public class GrafoDirigidoAciclico {
         } else {
             for (Arista aristasToda : aristasTodas) {
                 if (aristasToda != null) {
-                    nAristas++;
-                }
+                    if (aristasToda != null || !(aristasToda.destino.compareTo("" + -1) == 0 && aristasToda.origen.compareTo("" + -1) == 0)) {
+                        //System.out.println("no es null");
+                        nAristas++;
+                    }
+                } 
             }
         }
         return nAristas;
@@ -119,40 +123,74 @@ public class GrafoDirigidoAciclico {
         return conect;
     }
 
-    public String topologicalSort() {
-        Pila pila = new Pila();
-        String orden = "";
-        boolean verticesVisitados[] = new boolean[cantidadVertices];
-        for (int i = 0; i < cantidadVertices; i++) {
-            verticesVisitados[i] = false;
-        }
+//    public String topologicalSort() {
+//        Pila pila = new Pila();
+//        String orden = "";
+//        boolean verticesVisitados[] = new boolean[cantidadVertices];
+//        for (int i = 0; i < cantidadVertices; i++) {
+//            verticesVisitados[i] = false;
+//        }
+//
+//        for (int i = 0; i < cantidadVertices; i++) {
+//            if (verticesVisitados[i] == false) {
+//                ordenamientoTopologico(i, verticesVisitados, pila);
+//            }
+//        }
+//        while (pila.estaVacia() == false) {
+//            orden += pila.pop() + "-";
+//        }
+//        return orden;
+//    }
+//
+//    private void ordenamientoTopologico(int j, boolean vertices[], Pila pila) {
+//        vertices[j] = true;
+//        int k;
+//        Iterator i = listaAdyacencia[j].iterator();
+//
+//        while (i.hasNext()) {
+//            k = (int) i.next();
+//            //System.out.println(k);
+//            if (!vertices[k - 1]) {
+//                ordenamientoTopologico(k, vertices, pila);
+//            }
+//        }
+//        pila.push(j + 1);
+//    }
 
-        for (int i = 0; i < cantidadVertices; i++) {
-            if (verticesVisitados[i] == false) {
-                ordenamientoTopologico(i, verticesVisitados, pila);
+    public void topo2(){
+        int[] gradosEntrada = new int[todosVertices.length];
+        int gradoMayor=0;
+        for (int i = 0; i < todosVertices.length; i++) {
+            gradosEntrada[i]= gradoDeEntrada(todosVertices[i].getNombre());
+            //System.out.println(gradosEntrada[i]);
+        }
+        
+//        for (int i = 0; i < gradosEntrada.length; i++) {
+//            if(gradosEntrada[i]==0){
+//                
+//            }
+//        }
+        for (int i = 0; i < gradosEntrada.length; i++) {
+            if(gradosEntrada[i]>gradoMayor){
+                gradoMayor=gradosEntrada[i];
             }
         }
-        while (pila.estaVacia() == false) {
-            orden += pila.pop() + "-";
-        }
-        return orden;
-    }
-
-    private void ordenamientoTopologico(int j, boolean vertices[], Pila pila) {
-        vertices[j] = true;
-        int k;
-        Iterator i = listaAdyacencia[j].iterator();
-
-        while (i.hasNext()) {
-            k = (int) i.next();
-            //System.out.println(k);
-            if (!vertices[k - 1]) {
-                ordenamientoTopologico(k, vertices, pila);
+        
+        for (int i = 0; i < gradoMayor+1; i++) {
+            for (int j = 0; j < gradosEntrada.length; j++) {
+            if(gradosEntrada[j]==i){
+               
+                System.out.print(todosVertices[j].getNombre()+"-");
+                eliminarAristasDeXVertice2(todosVertices[j].getNombre());
+                
             }
+            
         }
-        pila.push(j+1);
+        }
+        
+        
+        
     }
-
     public boolean tieneCiclos() {//corregir
         boolean tiene = false;
         for (int m = 0; m < aristas; m++) {
@@ -165,13 +203,12 @@ public class GrafoDirigidoAciclico {
         return tiene;
 
     }
-    
+
 //    private void busquedaProfunda(Vertice origen, Vertice destino){
 //        Pila pila = new Pila();
 //        LinkedList<Vertice> verticesVisitados = new LinkedList<>();
 //        
 //    }
-    
     //TERMINADO ANDREA
     public String mostrarEstructura() {
         String estructura = "";
@@ -253,6 +290,30 @@ public class GrafoDirigidoAciclico {
             }
         }
         return pos;
+    }
+
+//    public void eliminarAristasDeXVertice(int posicion) {
+//        for (Arista aristasToda : aristasTodas) {
+//            if (aristasToda != null && aristasToda.origen.compareTo(todosVertices[posicion].nombre) == 0) {
+//                aristasToda.eliminarArista();
+//                aristasToda = null;
+//                System.out.println("entroooo");
+//            }
+//        }
+//
+//    }
+    
+    public void eliminarAristasDeXVertice2(String nombre) {
+        int vertice= encontrarVertice(nombre);
+        //System.out.println(vertice);
+        for (int i = 0; i < aristasTodas.length-1; i++) {
+//            if(posicion == i){
+//                aristasTodas[i] = null;
+//            }
+            if(aristasTodas[i] != null && aristasTodas[i].origen.compareTo(todosVertices[vertice].nombre) == 0){
+                aristasTodas[i]=null;
+            }
+        }
     }
 
 }
