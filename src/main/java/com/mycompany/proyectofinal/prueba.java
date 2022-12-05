@@ -35,7 +35,7 @@ public class prueba {
 //        System.out.println("Grado de entrada de vertice 3:"+ grafo.gradoDeEntrada(3));
 //        System.out.println("Arista entre 0 y 1: "+ grafo.adyacente(0, 1));
         System.out.println(grafo.mostrarEstructura());
-        System.out.println("Es adyacente 0 y 1: " + grafo.adyacente(0, 1));
+        //System.out.println("Es adyacente 0 y 1: " + grafo.adyacente(0, 1));
         System.out.println("Ordenamiento topológico: " + grafo.topologicalSort());
 //        System.out.println("Borrar aristas");
 //        grafo.eliminarAristas();
