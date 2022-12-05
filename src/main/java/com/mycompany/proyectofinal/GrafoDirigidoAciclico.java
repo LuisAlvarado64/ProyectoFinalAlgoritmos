@@ -163,7 +163,10 @@ public class GrafoDirigidoAciclico {
         {
             Arista aux = aristasTodas[m];
             tiene = aux.hayCiclo();
-            m=aristas;
+            if(tiene==true)
+            {
+                m=aristas;
+            }
         }
         return tiene;
 
