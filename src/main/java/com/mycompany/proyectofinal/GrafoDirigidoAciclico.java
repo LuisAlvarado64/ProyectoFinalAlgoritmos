@@ -88,13 +88,34 @@ public class GrafoDirigidoAciclico {
         }
         return si;
     }
-
+    //MAGUI 
     public boolean conectados(int i, int j) {
         boolean conect = false;
         if ((j > vertices - 1 || j < 0)) {
             throw new IllegalArgumentException("j están fuera de rango");
-        } else {
-
+        } else 
+        {
+            int pos1 = encontrarVertice(Integer.toString(i));
+            int pos2 = encontrarVertice(Integer.toString(j));
+            if(pos1!=-1 && pos2!=-1)
+            {
+                for(int m=0;m<aristas;m++)
+                {
+                    Arista aux = aristasTodas[m];
+                    if(aux.getDestino().equals(Integer.toString(i)) && aux.getOrigen().equals(Integer.toString(j)))
+                    {
+                        conect = true;
+                    }
+                    if(aux.getOrigen().equals(Integer.toString(i)) && aux.getDestino().equals(Integer.toString(j)))
+                    {
+                        conect = true;
+                    }
+                }
+            }
+            else
+            {
+                System.out.println("Vertice inexistente");
+            }
         }
         return conect;
     }
