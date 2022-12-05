@@ -20,7 +20,7 @@ public class GrafoDirigidoAciclico {
     public GrafoDirigidoAciclico(int n) {
         this.vertices = n;
         todosVertices = new Vertice[n];
-        aristasTodas = new Arista[n * n];
+        aristasTodas = new Arista[n * n*n];
         listaAdyacencia = new LinkedList[n];
         for (int i = 0; i < n; ++i) {
             listaAdyacencia[i] = new LinkedList();
