@@ -191,7 +191,7 @@ public class GrafoDirigidoAciclico {
         
         
     }
-    public boolean tieneCiclos() {//corregir
+    public boolean tieneCiclos() {
         boolean tiene = false;
         for (int m = 0; m < aristas; m++) {
             Arista aux = aristasTodas[m];
