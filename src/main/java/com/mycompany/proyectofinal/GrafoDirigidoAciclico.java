@@ -1,6 +1,6 @@
 package com.mycompany.proyectofinal;
 
-import java.util.Arrays;
+
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -10,7 +10,7 @@ import java.util.LinkedList;
  */
 public class GrafoDirigidoAciclico {
 
-    int vertices;
+    int cantidadVertices;
     Vertice[] todosVertices;
     int aristas = 0;
     Arista aristasTodas[];
@@ -18,7 +18,7 @@ public class GrafoDirigidoAciclico {
     private LinkedList<Integer> listaAdyacencia[];
 
     public GrafoDirigidoAciclico(int n) {
-        this.vertices = n;
+        this.cantidadVertices = n;
         todosVertices = new Vertice[n];
         aristasTodas = new Arista[n * n*n];
         listaAdyacencia = new LinkedList[n];
@@ -28,13 +28,13 @@ public class GrafoDirigidoAciclico {
     }
 
     //TERMINADO ANDREA
-    public int gradoDeEntrada(int i) {
+    public int gradoDeEntrada(int indiceVertice) {
         int gradoEntrada = 0;
-        if (i > vertices - 1 || i < 0) {
+        if (indiceVertice > cantidadVertices - 1 || indiceVertice < 0) {
             throw new IllegalArgumentException("i está fuera de rango");
         } else {
             for (Arista aristasToda : aristasTodas) {
-                if (aristasToda != null && aristasToda.destino.compareTo("" + i) == 0) { //compara el vertice con los destinos de todas las aristas para saber si tiene grados de entrada
+                if (aristasToda != null && aristasToda.destino.compareTo("" + indiceVertice) == 0) { //compara el vertice con los destinos de todas las aristas para saber si tiene grados de entrada
                     gradoEntrada++;
 
                 }
@@ -47,7 +47,7 @@ public class GrafoDirigidoAciclico {
     //TERMINADO ANDREA
     public int gradoDeSalida(int i) {
         int gradoSalida = 0;
-        if (i > vertices - 1 || i < 0) {
+        if (i > cantidadVertices - 1 || i < 0) {
             throw new IllegalArgumentException("i está fuera de rango");
         } else {
             for (Arista aristasToda : aristasTodas) {
@@ -77,7 +77,10 @@ public class GrafoDirigidoAciclico {
     //TERMINADO ANDREA
     public boolean adyacente(int i, int j) {
         boolean si = false;
-        if ((i > vertices - 1 || i < 0) || (j > vertices - 1 || j < 0)) {
+        int v1= encontrarVertice(""+i);
+        int v2= encontrarVertice(""+j);
+        if(v1==-1 || v2==-1){
+        //if ((i > vertices - 1 || i < 0) || (j > vertices - 1 || j < 0)) {
             throw new IllegalArgumentException("i o j están fuera de rango");
         } else {
             for (Arista aristasToda : aristasTodas) {
@@ -91,7 +94,10 @@ public class GrafoDirigidoAciclico {
     //TERMINADO MAGUI 
     public boolean conectados(int i, int j) {
         boolean conect = false;
-        if ((j > vertices - 1 || j < 0)) {
+        int v1= encontrarVertice(""+i);
+        int v2= encontrarVertice(""+j);
+       // if ((j > vertices - 1 || j < 0)) {
+       if(v1==-1 || v2==-1){
             throw new IllegalArgumentException("j están fuera de rango");
         } else 
         {
@@ -123,13 +129,13 @@ public class GrafoDirigidoAciclico {
     public String topologicalSort() {
         Pila pila = new Pila();
         String orden = "";
-        boolean verticesVisitados[] = new boolean[vertices];
-        for (int i = 0; i < vertices; i++) {
+        boolean verticesVisitados[] = new boolean[cantidadVertices];
+        for (int i = 0; i < cantidadVertices; i++) {
             verticesVisitados[i] = false;
             
         }
 
-        for (int i = 0; i < vertices; i++) {
+        for (int i = 0; i < cantidadVertices; i++) {
             if (verticesVisitados[i] == false) {
                 ordenamientoTopologico(i, verticesVisitados, pila);
 
@@ -145,9 +151,10 @@ public class GrafoDirigidoAciclico {
         vertices[j] = true;
         int k;
         Iterator i = listaAdyacencia[j].iterator();
+        
         while (i.hasNext()) {
             k = (int) i.next();
-
+            System.out.println(k);
             if (!vertices[k]) {
                 ordenamientoTopologico(k, vertices, pila);
             }
@@ -194,8 +201,13 @@ public class GrafoDirigidoAciclico {
     //Agregar una arista ✓ MAGUI
     public boolean insertarArista(int i, int j) {
         boolean sePudo = true;
-        listaAdyacencia[i].add(j);
-        if ((i > vertices - 1 || i < 0) || (j > vertices - 1 || j < 0)) {
+        int v1= encontrarVertice(""+i);
+        int v2= encontrarVertice(""+j);
+       // listaAdyacencia[i].add(j);
+        listaAdyacencia[v1].add(j);
+
+        if(v1==-1 || v2==-1){
+        //if ((i > vertices - 1 || i < 0) || (j > vertices - 1 || j < 0)) {
             throw new IllegalArgumentException("i o j están fuera de rango");
         } else {
             int posicionI = encontrarVertice(Integer.toString(i));
@@ -221,7 +233,7 @@ public class GrafoDirigidoAciclico {
     public void insertarVertice(String nombre) {
         Vertice nuevoV = new Vertice(nombre);
         boolean repetido = false;
-        if (vActual < vertices) {
+        if (vActual < cantidadVertices) {
             for (int i = 0; i < vActual; i++) {
                 repetido = todosVertices[i].getNombre().equals(nombre);
             }
