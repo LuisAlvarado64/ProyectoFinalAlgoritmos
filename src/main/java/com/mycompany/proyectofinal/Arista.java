@@ -6,15 +6,15 @@ package com.mycompany.proyectofinal;
 
 /**
  * ✓
+ *
  * @author magui
  */
-public class Arista 
-{
+public class Arista {
+
     String origen;
     String destino;
 
-    public Arista(String origen, String destino) 
-    {
+    public Arista(String origen, String destino) {
         this.origen = origen;
         this.destino = destino;
     }
@@ -27,8 +27,8 @@ public class Arista
         return destino;
     }
 //  Regresa si la arista es un ciclo o no  ✓
-    public boolean hayCiclo()
-    {
+
+    public boolean hayCiclo() {
         return destino.equals(origen);
     }
 }

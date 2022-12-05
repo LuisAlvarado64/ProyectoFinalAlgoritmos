@@ -6,10 +6,11 @@ package com.mycompany.proyectofinal;
  */
 public class A {
 //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-    
-    public void holis(){
+
+    public void holis() {
         System.out.println("que loco esto");
         System.out.println("se ve?");
         System.out.println("siiiiiii ");
+        System.out.println("ola");
     }
 }

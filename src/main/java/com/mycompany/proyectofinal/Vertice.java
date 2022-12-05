@@ -4,35 +4,35 @@
  */
 package com.mycompany.proyectofinal;
 
-import java.util.LinkedList;
-
 /**
  * ✓
+ *
  * @author magui
  */
 public class Vertice {
+
     String nombre;
     int posicion;
-    
+
     public Vertice(String nombre) {
         this.nombre = nombre;
-        posicion=-1;
+        posicion = -1;
     }
-    public Vertice(String nom, int pos) 
-    {
+
+    public Vertice(String nom, int pos) {
         this.nombre = nom;
         this.posicion = pos;
     }
-    public void darPosicion(int pos)
-    {
+
+    public void darPosicion(int pos) {
         this.posicion = pos;
     }
-    public String getNombre()
-    {
+
+    public String getNombre() {
         return nombre;
     }
-    public int getPosicion() 
-    {
+
+    public int getPosicion() {
         return posicion;
     }
 
@@ -41,6 +41,4 @@ public class Vertice {
         return "Vértice: " + nombre + "," + "Posición: " + posicion;
     }
 
-   
-    
 }
