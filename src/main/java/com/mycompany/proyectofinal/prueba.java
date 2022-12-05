@@ -17,7 +17,7 @@ public class prueba {
     public static void main(String[] args) {
         GrafoDirigidoAciclico grafo = new GrafoDirigidoAciclico(4);
         grafo.insertarVertice("1");
-        grafo.insertarVertice("5");
+        grafo.insertarVertice("4");
         grafo.insertarVertice("2");
         grafo.insertarVertice("3");
 //        grafo.insertarArista(0, 2);
@@ -25,8 +25,8 @@ public class prueba {
         grafo.insertarArista(1, 3);
         grafo.insertarArista(1, 2);
         grafo.insertarArista(3, 2);
-        grafo.insertarArista(3, 5);
-        grafo.insertarArista(5, 1);
+        grafo.insertarArista(3, 4);
+        grafo.insertarArista(4, 1);
 
         System.out.println("Total de aristas: " + grafo.cuantasAristasHay());
 //        System.out.println("Grado de entrada de vertice 0:"+ grafo.gradoDeEntrada(0));
@@ -35,7 +35,11 @@ public class prueba {
 //        System.out.println("Grado de entrada de vertice 3:"+ grafo.gradoDeEntrada(3));
 //        System.out.println("Arista entre 0 y 1: "+ grafo.adyacente(0, 1));
         System.out.println(grafo.mostrarEstructura());
+
         //System.out.println("Es adyacente 0 y 1: " + grafo.adyacente(0, 1));
+
+        System.out.println("Es adyacente 0 y 1: " + grafo.adyacente(4, 1));
+
         System.out.println("Ordenamiento topológico: " + grafo.topologicalSort());
 //        System.out.println("Borrar aristas");
 //        grafo.eliminarAristas();
