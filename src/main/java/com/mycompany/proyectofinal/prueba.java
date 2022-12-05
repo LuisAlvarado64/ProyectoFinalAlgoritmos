@@ -17,11 +17,11 @@ public class prueba {
         grafo.insertarVertice("3");
 //        grafo.insertarArista(0, 2);
 //        grafo.insertarArista(0, 3);
-        grafo.insertarArista(1, 3);
-        grafo.insertarArista(1, 2);
-        grafo.insertarArista(3, 2);
-        grafo.insertarArista(3, 4);
-        grafo.insertarArista(4, 1);
+        System.out.println("Se pudo: "+grafo.insertarArista(1, 3));
+        System.out.println("Se pudo: "+grafo.insertarArista(1, 2));
+        System.out.println("Se pudo: "+grafo.insertarArista(3, 2));
+        System.out.println("Se pudo: "+grafo.insertarArista(3, 4));
+        System.out.println("Se pudo: "+grafo.insertarArista(4, 1));
 
         System.out.println("Total de aristas: " + grafo.cuantasAristasHay());
 //        System.out.println("Grado de entrada de vertice 0:"+ grafo.gradoDeEntrada(0));
@@ -29,11 +29,12 @@ public class prueba {
 //        System.out.println("Grado de entrada de vertice 2:"+ grafo.gradoDeEntrada(2));
 //        System.out.println("Grado de entrada de vertice 3:"+ grafo.gradoDeEntrada(3));
 //        System.out.println("Arista entre 0 y 1: "+ grafo.adyacente(0, 1));
-        System.out.println(grafo.mostrarEstructura());
-
+        System.out.println("Estructura\n"+grafo.mostrarEstructura());
+        System.out.println("Tiene ciclo: "+grafo.tieneCiclos());
         //System.out.println("Es adyacente 0 y 1: " + grafo.adyacente(0, 1));
 
-        System.out.println("Es adyacente 0 y 1: " + grafo.adyacente(4, 1));
+        System.out.println("Es adyacente 4 y 1: " + grafo.adyacente(4, 1));
+        System.out.println("Está conectado 3 y 1: " + grafo.conectados(3, 1));
 
         System.out.println("Ordenamiento topológico: " + grafo.topologicalSort());
 //        System.out.println("Borrar aristas");

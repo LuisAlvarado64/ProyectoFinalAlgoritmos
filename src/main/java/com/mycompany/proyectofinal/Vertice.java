@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.proyectofinal;
 
 /**
@@ -13,10 +9,13 @@ public class Vertice {
 
     String nombre;
     int posicion;
-
+    int aristasSalida;
+    int aristasEntrada;
     public Vertice(String nombre) {
         this.nombre = nombre;
         posicion = -1;
+        aristasSalida = 0;
+        aristasEntrada = 0;
     }
 
     public Vertice(String nom, int pos) {
@@ -36,6 +35,24 @@ public class Vertice {
         return posicion;
     }
 
+    public int getAristasSalida() { //retorna el grado de salida
+        return aristasSalida;
+    }
+
+    public int getAristasEntrada() { //retorna el grado de entrada
+        return aristasEntrada;
+    }
+
+    public void setAristasSalida(int aristasSalida) { //coloca las aristas de salida
+        this.aristasSalida += aristasSalida;
+    }
+
+    public void setAristasEntrada(int aristasEntrada) { //coloca las aristas de entrada
+        this.aristasEntrada += aristasEntrada;
+    }
+    
+    
+    
     @Override
     public String toString() {
         return "Vértice: " + nombre + "," + "Posición: " + posicion;

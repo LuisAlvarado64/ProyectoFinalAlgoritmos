@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.proyectofinal;
 
 /**
@@ -13,12 +9,27 @@ public class Arista {
 
     String origen;
     String destino;
+    Vertice origenV;
+    Vertice destinoV;
 
     public Arista(String origen, String destino) {
         this.origen = origen;
         this.destino = destino;
     }
 
+    public Arista(Vertice origenV, Vertice destinoV) {
+        this.origenV = origenV;
+        this.destinoV = destinoV;
+    }
+
+    public Vertice getOrigenV() {
+        return origenV;
+    }
+
+    public Vertice getDestinoV() {
+        return destinoV;
+    }
+    
     public String getOrigen() {
         return origen;
     }

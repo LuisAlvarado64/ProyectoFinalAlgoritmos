@@ -1,6 +1,5 @@
 package com.mycompany.proyectofinal;
 
-
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -20,9 +19,9 @@ public class GrafoDirigidoAciclico {
     public GrafoDirigidoAciclico(int n) {
         this.cantidadVertices = n;
         todosVertices = new Vertice[n];
-        aristasTodas = new Arista[n * n*n];
+        aristasTodas = new Arista[n * n * n];
         listaAdyacencia = new LinkedList[n];
-        for (int i = 0; i < n; ++i) {
+        for (int i = 0; i < n; i++) {
             listaAdyacencia[i] = new LinkedList();
         }
     }
@@ -77,10 +76,10 @@ public class GrafoDirigidoAciclico {
     //TERMINADO ANDREA
     public boolean adyacente(int i, int j) {
         boolean si = false;
-        int v1= encontrarVertice(""+i);
-        int v2= encontrarVertice(""+j);
-        if(v1==-1 || v2==-1){
-        //if ((i > vertices - 1 || i < 0) || (j > vertices - 1 || j < 0)) {
+        int v1 = encontrarVertice("" + i);
+        int v2 = encontrarVertice("" + j);
+        if (v1 == -1 || v2 == -1) {
+            //if ((i > vertices - 1 || i < 0) || (j > vertices - 1 || j < 0)) {
             throw new IllegalArgumentException("i o j están fuera de rango");
         } else {
             for (Arista aristasToda : aristasTodas) {
@@ -91,35 +90,29 @@ public class GrafoDirigidoAciclico {
         }
         return si;
     }
+
     //TERMINADO MAGUI 
     public boolean conectados(int i, int j) {
         boolean conect = false;
-        int v1= encontrarVertice(""+i);
-        int v2= encontrarVertice(""+j);
-       // if ((j > vertices - 1 || j < 0)) {
-       if(v1==-1 || v2==-1){
+        int v1 = encontrarVertice("" + i);
+        int v2 = encontrarVertice("" + j);
+        // if ((j > vertices - 1 || j < 0)) {
+        if (v1 == -1 || v2 == -1) {
             throw new IllegalArgumentException("j están fuera de rango");
-        } else 
-        {
+        } else {
             int pos1 = encontrarVertice(Integer.toString(i));
             int pos2 = encontrarVertice(Integer.toString(j));
-            if(pos1!=-1 && pos2!=-1)
-            {
-                for(int m=0;m<aristas;m++)
-                {
+            if (pos1 != -1 && pos2 != -1) {
+                for (int m = 0; m < aristas; m++) {
                     Arista aux = aristasTodas[m];
-                    if(aux.getDestino().equals(Integer.toString(i)) && aux.getOrigen().equals(Integer.toString(j)))
-                    {
+                    if (aux.getDestino().equals(Integer.toString(i)) && aux.getOrigen().equals(Integer.toString(j))) {
                         conect = true;
                     }
-                    if(aux.getOrigen().equals(Integer.toString(i)) && aux.getDestino().equals(Integer.toString(j)))
-                    {
+                    if (aux.getOrigen().equals(Integer.toString(i)) && aux.getDestino().equals(Integer.toString(j))) {
                         conect = true;
                     }
                 }
-            }
-            else
-            {
+            } else {
                 System.out.println("Vertice inexistente");
             }
         }
@@ -132,13 +125,11 @@ public class GrafoDirigidoAciclico {
         boolean verticesVisitados[] = new boolean[cantidadVertices];
         for (int i = 0; i < cantidadVertices; i++) {
             verticesVisitados[i] = false;
-            
         }
 
         for (int i = 0; i < cantidadVertices; i++) {
             if (verticesVisitados[i] == false) {
                 ordenamientoTopologico(i, verticesVisitados, pila);
-
             }
         }
         while (pila.estaVacia() == false) {
@@ -151,34 +142,36 @@ public class GrafoDirigidoAciclico {
         vertices[j] = true;
         int k;
         Iterator i = listaAdyacencia[j].iterator();
-        
+
         while (i.hasNext()) {
             k = (int) i.next();
-            System.out.println(k);
-            if (!vertices[k]) {
+            //System.out.println(k);
+            if (!vertices[k - 1]) {
                 ordenamientoTopologico(k, vertices, pila);
             }
-
         }
-
-        pila.push(j);
+        pila.push(j+1);
     }
 
-    public boolean tieneCiclos() {
+    public boolean tieneCiclos() {//corregir
         boolean tiene = false;
-        for(int m=0;m<aristas;m++)
-        {
+        for (int m = 0; m < aristas; m++) {
             Arista aux = aristasTodas[m];
             tiene = aux.hayCiclo();
-            if(tiene==true)
-            {
-                m=aristas;
+            if (tiene == true) {
+                m = aristas;
             }
         }
         return tiene;
 
     }
-
+    
+//    private void busquedaProfunda(Vertice origen, Vertice destino){
+//        Pila pila = new Pila();
+//        LinkedList<Vertice> verticesVisitados = new LinkedList<>();
+//        
+//    }
+    
     //TERMINADO ANDREA
     public String mostrarEstructura() {
         String estructura = "";
@@ -201,13 +194,13 @@ public class GrafoDirigidoAciclico {
     //Agregar una arista ✓ MAGUI
     public boolean insertarArista(int i, int j) {
         boolean sePudo = true;
-        int v1= encontrarVertice(""+i);
-        int v2= encontrarVertice(""+j);
-       // listaAdyacencia[i].add(j);
-        listaAdyacencia[v1].add(j);
+        int v1 = encontrarVertice("" + i);
+        int v2 = encontrarVertice("" + j);
+        // listaAdyacencia[i].add(j);
+        //listaAdyacencia[v1].add(j);
 
-        if(v1==-1 || v2==-1){
-        //if ((i > vertices - 1 || i < 0) || (j > vertices - 1 || j < 0)) {
+        if (v1 == -1 || v2 == -1) {
+            //if ((i > vertices - 1 || i < 0) || (j > vertices - 1 || j < 0)) {
             throw new IllegalArgumentException("i o j están fuera de rango");
         } else {
             int posicionI = encontrarVertice(Integer.toString(i));
@@ -215,7 +208,7 @@ public class GrafoDirigidoAciclico {
             if (posicionI != -1 && posicionJ != -1) {
                 aristasTodas[aristas] = new Arista(Integer.toString(i), Integer.toString(j));
                 aristas++;
-                
+                //listaAdyacencia[i].add(j);
             } else {
                 System.out.println("Vertice inexistente.");
             }
@@ -263,4 +256,3 @@ public class GrafoDirigidoAciclico {
     }
 
 }
-
