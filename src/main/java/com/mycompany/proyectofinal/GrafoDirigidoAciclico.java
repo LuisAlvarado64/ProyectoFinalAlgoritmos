@@ -181,7 +181,7 @@ public class GrafoDirigidoAciclico {
             if(gradosEntrada[j]==i){
                
                 System.out.print(todosVertices[j].getNombre()+"-");
-                eliminarAristasDeXVertice2(todosVertices[j].getNombre());
+               // eliminarAristasDeXVertice2(todosVertices[j].getNombre());
                 
             }
             
@@ -193,6 +193,7 @@ public class GrafoDirigidoAciclico {
     }
     public boolean tieneCiclos() {
         boolean tiene = false;
+        
         for (int m = 0; m < aristas; m++) {
             Arista aux = aristasTodas[m];
             tiene = aux.hayCiclo();
@@ -200,6 +201,7 @@ public class GrafoDirigidoAciclico {
                 m = aristas;
             }
         }
+
         return tiene;
 
     }
@@ -303,17 +305,17 @@ public class GrafoDirigidoAciclico {
 //
 //    }
     
-    public void eliminarAristasDeXVertice2(String nombre) {
-        int vertice= encontrarVertice(nombre);
-        //System.out.println(vertice);
-        for (int i = 0; i < aristasTodas.length-1; i++) {
-//            if(posicion == i){
-//                aristasTodas[i] = null;
+//    public void eliminarAristasDeXVertice2(String nombre) {
+//        int vertice= encontrarVertice(nombre);
+//        //System.out.println(vertice);
+//        for (int i = 0; i < aristasTodas.length-1; i++) {
+////            if(posicion == i){
+////                aristasTodas[i] = null;
+////            }
+//            if(aristasTodas[i] != null && aristasTodas[i].origen.compareTo(todosVertices[vertice].nombre) == 0){
+//                aristasTodas[i]=null;
 //            }
-            if(aristasTodas[i] != null && aristasTodas[i].origen.compareTo(todosVertices[vertice].nombre) == 0){
-                aristasTodas[i]=null;
-            }
-        }
-    }
+//        }
+//    }
 
 }
