@@ -77,7 +77,10 @@ public class GrafoDirigidoAciclico {
     //TERMINADO ANDREA
     public boolean adyacente(int i, int j) {
         boolean si = false;
-        if ((i > vertices - 1 || i < 0) || (j > vertices - 1 || j < 0)) {
+        int v1= encontrarVertice(""+i);
+        int v2= encontrarVertice(""+j);
+        if(v1==-1 || v2==-1){
+        //if ((i > vertices - 1 || i < 0) || (j > vertices - 1 || j < 0)) {
             throw new IllegalArgumentException("i o j están fuera de rango");
         } else {
             for (Arista aristasToda : aristasTodas) {
@@ -91,7 +94,10 @@ public class GrafoDirigidoAciclico {
     //TERMINADO MAGUI 
     public boolean conectados(int i, int j) {
         boolean conect = false;
-        if ((j > vertices - 1 || j < 0)) {
+        int v1= encontrarVertice(""+i);
+        int v2= encontrarVertice(""+j);
+       // if ((j > vertices - 1 || j < 0)) {
+       if(v1==-1 || v2==-1){
             throw new IllegalArgumentException("j están fuera de rango");
         } else 
         {
@@ -195,7 +201,10 @@ public class GrafoDirigidoAciclico {
     public boolean insertarArista(int i, int j) {
         boolean sePudo = true;
         listaAdyacencia[i].add(j);
-        if ((i > vertices - 1 || i < 0) || (j > vertices - 1 || j < 0)) {
+        int v1= encontrarVertice(""+i);
+        int v2= encontrarVertice(""+j);
+        if(v1==-1 || v2==-1){
+        //if ((i > vertices - 1 || i < 0) || (j > vertices - 1 || j < 0)) {
             throw new IllegalArgumentException("i o j están fuera de rango");
         } else {
             int posicionI = encontrarVertice(Integer.toString(i));

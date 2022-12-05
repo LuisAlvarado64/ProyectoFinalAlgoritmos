@@ -17,7 +17,7 @@ public class prueba {
     public static void main(String[] args) {
         GrafoDirigidoAciclico grafo = new GrafoDirigidoAciclico(4);
         grafo.insertarVertice("1");
-        grafo.insertarVertice("5");
+        grafo.insertarVertice("0");
         grafo.insertarVertice("2");
         grafo.insertarVertice("3");
 //        grafo.insertarArista(0, 2);
@@ -25,8 +25,8 @@ public class prueba {
         grafo.insertarArista(1, 3);
         grafo.insertarArista(1, 2);
         grafo.insertarArista(3, 2);
-        grafo.insertarArista(3, 5);
-        grafo.insertarArista(5, 1);
+        grafo.insertarArista(3, 0);
+        grafo.insertarArista(0, 1);
 
         System.out.println("Total de aristas: " + grafo.cuantasAristasHay());
 //        System.out.println("Grado de entrada de vertice 0:"+ grafo.gradoDeEntrada(0));
