@@ -151,9 +151,10 @@ public class GrafoDirigidoAciclico {
         vertices[j] = true;
         int k;
         Iterator i = listaAdyacencia[j].iterator();
+        
         while (i.hasNext()) {
             k = (int) i.next();
-
+            System.out.println(k);
             if (!vertices[k]) {
                 ordenamientoTopologico(k, vertices, pila);
             }
@@ -200,9 +201,11 @@ public class GrafoDirigidoAciclico {
     //Agregar una arista ✓ MAGUI
     public boolean insertarArista(int i, int j) {
         boolean sePudo = true;
-        listaAdyacencia[i].add(j);
         int v1= encontrarVertice(""+i);
         int v2= encontrarVertice(""+j);
+       // listaAdyacencia[i].add(j);
+        listaAdyacencia[v1].add(j);
+
         if(v1==-1 || v2==-1){
         //if ((i > vertices - 1 || i < 0) || (j > vertices - 1 || j < 0)) {
             throw new IllegalArgumentException("i o j están fuera de rango");
