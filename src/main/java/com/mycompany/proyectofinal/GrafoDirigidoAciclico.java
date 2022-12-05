@@ -20,7 +20,7 @@ public class GrafoDirigidoAciclico {
     public GrafoDirigidoAciclico(int n) {
         this.vertices = n;
         todosVertices = new Vertice[n];
-        aristasTodas = new Arista[n * n];
+        aristasTodas = new Arista[n * n*n];
         listaAdyacencia = new LinkedList[n];
         for (int i = 0; i < n; ++i) {
             listaAdyacencia[i] = new LinkedList();
@@ -88,13 +88,34 @@ public class GrafoDirigidoAciclico {
         }
         return si;
     }
-
+    //TERMINADO MAGUI 
     public boolean conectados(int i, int j) {
         boolean conect = false;
         if ((j > vertices - 1 || j < 0)) {
             throw new IllegalArgumentException("j están fuera de rango");
-        } else {
-
+        } else 
+        {
+            int pos1 = encontrarVertice(Integer.toString(i));
+            int pos2 = encontrarVertice(Integer.toString(j));
+            if(pos1!=-1 && pos2!=-1)
+            {
+                for(int m=0;m<aristas;m++)
+                {
+                    Arista aux = aristasTodas[m];
+                    if(aux.getDestino().equals(Integer.toString(i)) && aux.getOrigen().equals(Integer.toString(j)))
+                    {
+                        conect = true;
+                    }
+                    if(aux.getOrigen().equals(Integer.toString(i)) && aux.getDestino().equals(Integer.toString(j)))
+                    {
+                        conect = true;
+                    }
+                }
+            }
+            else
+            {
+                System.out.println("Vertice inexistente");
+            }
         }
         return conect;
     }
@@ -137,8 +158,16 @@ public class GrafoDirigidoAciclico {
     }
 
     public boolean tieneCiclos() {
-        boolean tiene = true;
-
+        boolean tiene = false;
+        for(int m=0;m<aristas;m++)
+        {
+            Arista aux = aristasTodas[m];
+            tiene = aux.hayCiclo();
+            if(tiene==true)
+            {
+                m=aristas;
+            }
+        }
         return tiene;
 
     }
