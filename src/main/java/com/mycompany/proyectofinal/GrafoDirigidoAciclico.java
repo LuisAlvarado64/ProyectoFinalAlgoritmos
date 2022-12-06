@@ -1,11 +1,11 @@
 package com.mycompany.proyectofinal;
 
-import java.util.Iterator;
-import java.util.LinkedList;
+
+
 
 /**
  *
- * @author Luis Alvarado aaaaaaaaa
+ * @author magui, andrea y luis
  */
 public class GrafoDirigidoAciclico {
 
@@ -14,22 +14,29 @@ public class GrafoDirigidoAciclico {
     int aristas = 0;
     Arista aristasTodas[];
     int vActual = 0;
-    private LinkedList<Integer> listaAdyacencia[];
 
+
+    /**
+     * Constructor parametrizado
+     *
+     * @param n
+     */
     public GrafoDirigidoAciclico(int n) {
         this.cantidadVertices = n;
         todosVertices = new Vertice[n];
         aristasTodas = new Arista[n * n * n];
-        listaAdyacencia = new LinkedList[n];
-        for (int i = 0; i < n; i++) {
-            listaAdyacencia[i] = new LinkedList();
-        }
     }
 
     //TERMINADO ANDREA
+    /**
+     * Metodo que regresa el grado de entrada
+     *
+     * @param nombreVertice
+     * @return
+     */
     public int gradoDeEntrada(String nombreVertice) {
         int gradoEntrada = 0;
-        int v1= encontrarVertice(nombreVertice);
+        int v1 = encontrarVertice(nombreVertice);
         if (v1 > cantidadVertices - 1 || v1 < 0) {
             throw new IllegalArgumentException("i está fuera de rango");
         } else {
@@ -45,6 +52,12 @@ public class GrafoDirigidoAciclico {
     }
 
     //TERMINADO ANDREA
+    /**
+     * Metodo que regresa el grado de salida
+     *
+     * @param i
+     * @return
+     */
     public int gradoDeSalida(int i) {
         int gradoSalida = 0;
         if (i > cantidadVertices - 1 || i < 0) {
@@ -60,6 +73,11 @@ public class GrafoDirigidoAciclico {
     }
 
     //TERMINADO ANDREA
+    /**
+     * Metodo que regresa cuantas aristas hay
+     *
+     * @return
+     */
     public int cuantasAristasHay() {
         int nAristas = 0;
         if (aristasTodas == null) {
@@ -71,13 +89,20 @@ public class GrafoDirigidoAciclico {
                         //System.out.println("no es null");
                         nAristas++;
                     }
-                } 
+                }
             }
         }
         return nAristas;
     }
 
     //TERMINADO ANDREA
+    /**
+     * Metodo que indica si dos vertices son adyacentes
+     *
+     * @param i
+     * @param j
+     * @return
+     */
     public boolean adyacente(int i, int j) {
         boolean si = false;
         int v1 = encontrarVertice("" + i);
@@ -96,11 +121,17 @@ public class GrafoDirigidoAciclico {
     }
 
     //TERMINADO MAGUI 
+    /**
+     * Metodo que indica si dos vertices estan conectados
+     *
+     * @param i
+     * @param j
+     * @return
+     */
     public boolean conectados(int i, int j) {
         boolean conect = false;
         int v1 = encontrarVertice("" + i);
         int v2 = encontrarVertice("" + j);
-        // if ((j > vertices - 1 || j < 0)) {
         if (v1 == -1 || v2 == -1) {
             throw new IllegalArgumentException("j están fuera de rango");
         } else {
@@ -123,77 +154,41 @@ public class GrafoDirigidoAciclico {
         return conect;
     }
 
-//    public String topologicalSort() {
-//        Pila pila = new Pila();
-//        String orden = "";
-//        boolean verticesVisitados[] = new boolean[cantidadVertices];
-//        for (int i = 0; i < cantidadVertices; i++) {
-//            verticesVisitados[i] = false;
-//        }
-//
-//        for (int i = 0; i < cantidadVertices; i++) {
-//            if (verticesVisitados[i] == false) {
-//                ordenamientoTopologico(i, verticesVisitados, pila);
-//            }
-//        }
-//        while (pila.estaVacia() == false) {
-//            orden += pila.pop() + "-";
-//        }
-//        return orden;
-//    }
-//
-//    private void ordenamientoTopologico(int j, boolean vertices[], Pila pila) {
-//        vertices[j] = true;
-//        int k;
-//        Iterator i = listaAdyacencia[j].iterator();
-//
-//        while (i.hasNext()) {
-//            k = (int) i.next();
-//            //System.out.println(k);
-//            if (!vertices[k - 1]) {
-//                ordenamientoTopologico(k, vertices, pila);
-//            }
-//        }
-//        pila.push(j + 1);
-//    }
-
-    public void topologicalSort(){
+    /**
+     * Metodo para hacer el topological sort
+     */
+    public void topologicalSort() {
         int[] gradosEntrada = new int[todosVertices.length];
-        int gradoMayor=0;
+        int gradoMayor = 0;
         for (int i = 0; i < todosVertices.length; i++) {
-            gradosEntrada[i]= gradoDeEntrada(todosVertices[i].getNombre());
-            //System.out.println(gradosEntrada[i]);
+            gradosEntrada[i] = gradoDeEntrada(todosVertices[i].getNombre());
         }
-        
-//        for (int i = 0; i < gradosEntrada.length; i++) {
-//            if(gradosEntrada[i]==0){
-//                
-//            }
-//        }
+
         for (int i = 0; i < gradosEntrada.length; i++) {
-            if(gradosEntrada[i]>gradoMayor){
-                gradoMayor=gradosEntrada[i];
+            if (gradosEntrada[i] > gradoMayor) {
+                gradoMayor = gradosEntrada[i];
             }
         }
-        
-        for (int i = 0; i < gradoMayor+1; i++) {
+
+        for (int i = 0; i < gradoMayor + 1; i++) {
             for (int j = 0; j < gradosEntrada.length; j++) {
-            if(gradosEntrada[j]==i){
-               
-                System.out.print(todosVertices[j].getNombre()+"-");
-               // eliminarAristasDeXVertice2(todosVertices[j].getNombre());
-                
+                if (gradosEntrada[j] == i) {
+
+                    System.out.print(todosVertices[j].getNombre() + "-");
+                }
+
             }
-            
         }
-        }
-        
-        
-        
     }
+
+    /**
+     * Metodo que indica si tiene ciclos
+     *
+     * @return
+     */
     public boolean tieneCiclos() {
         boolean tiene = false;
-        
+
         for (int m = 0; m < aristas; m++) {
             Arista aux = aristasTodas[m];
             tiene = aux.hayCiclo();
@@ -206,12 +201,12 @@ public class GrafoDirigidoAciclico {
 
     }
 
-//    private void busquedaProfunda(Vertice origen, Vertice destino){
-//        Pila pila = new Pila();
-//        LinkedList<Vertice> verticesVisitados = new LinkedList<>();
-//        
-//    }
     //TERMINADO ANDREA
+    /**
+     * Metodo para mostrar estructura de la lista adyacente
+     *
+     * @return
+     */
     public String mostrarEstructura() {
         String estructura = "";
 
@@ -231,15 +226,19 @@ public class GrafoDirigidoAciclico {
     }
 
     //Agregar una arista ✓ MAGUI
+    /**
+     * Metodo para insertar arista entre dos vertices
+     *
+     * @param i
+     * @param j
+     * @return
+     */
     public boolean insertarArista(int i, int j) {
         boolean sePudo = true;
         int v1 = encontrarVertice("" + i);
         int v2 = encontrarVertice("" + j);
-        // listaAdyacencia[i].add(j);
-        //listaAdyacencia[v1].add(j);
 
         if (v1 == -1 || v2 == -1) {
-            //if ((i > vertices - 1 || i < 0) || (j > vertices - 1 || j < 0)) {
             throw new IllegalArgumentException("i o j están fuera de rango");
         } else {
             int posicionI = encontrarVertice(Integer.toString(i));
@@ -247,7 +246,6 @@ public class GrafoDirigidoAciclico {
             if (posicionI != -1 && posicionJ != -1) {
                 aristasTodas[aristas] = new Arista(Integer.toString(i), Integer.toString(j));
                 aristas++;
-                //listaAdyacencia[i].add(j);
             } else {
                 System.out.println("Vertice inexistente.");
             }
@@ -256,12 +254,20 @@ public class GrafoDirigidoAciclico {
     }
 
     //TERMINADO ANDREA
+    /**
+     * Metodo para eliminar aristas
+     */
     public void eliminarAristas() {
         aristasTodas = null;
         aristasTodas = new Arista[todosVertices.length * todosVertices.length];
     }
 
     //Agregar vertice ✓ MAGUI
+    /**
+     * Metodo para insertar vertice
+     *
+     * @param nombre
+     */
     public void insertarVertice(String nombre) {
         Vertice nuevoV = new Vertice(nombre);
         boolean repetido = false;
@@ -281,7 +287,14 @@ public class GrafoDirigidoAciclico {
         }
     }
 
-    //Buscar y regresar posicion del vertice deseado o si no existe un -1 ✓ MAGUI
+    //✓ MAGUI
+    /**
+     * Metodo para Buscar y regresar posicion del vertice deseado o si no existe
+     * un -1
+     *
+     * @param nombre
+     * @return
+     */
     public int encontrarVertice(String nombre) {
         Vertice buscando = new Vertice(nombre);
         int pos = -1;
@@ -293,29 +306,5 @@ public class GrafoDirigidoAciclico {
         }
         return pos;
     }
-
-//    public void eliminarAristasDeXVertice(int posicion) {
-//        for (Arista aristasToda : aristasTodas) {
-//            if (aristasToda != null && aristasToda.origen.compareTo(todosVertices[posicion].nombre) == 0) {
-//                aristasToda.eliminarArista();
-//                aristasToda = null;
-//                System.out.println("entroooo");
-//            }
-//        }
-//
-//    }
-    
-//    public void eliminarAristasDeXVertice2(String nombre) {
-//        int vertice= encontrarVertice(nombre);
-//        //System.out.println(vertice);
-//        for (int i = 0; i < aristasTodas.length-1; i++) {
-////            if(posicion == i){
-////                aristasTodas[i] = null;
-////            }
-//            if(aristasTodas[i] != null && aristasTodas[i].origen.compareTo(todosVertices[vertice].nombre) == 0){
-//                aristasTodas[i]=null;
-//            }
-//        }
-//    }
 
 }
